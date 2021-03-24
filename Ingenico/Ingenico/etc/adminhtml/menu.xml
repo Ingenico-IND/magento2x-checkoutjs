@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Ingenico_Ingenico::ingenico" title="Ingenico" translate="title" module="Ingenico_Ingenico" 
+        parent="Magento_Sales::sales" sortOrder="50" dependsOnModule="Ingenico_Ingenico" resource="Ingenico_Ingenico::ingenico"/>
+      <add id="Ingenico_Ingenico::ingenico_verification" title="Payment Verification" translate="title" 
+        module="Ingenico_Ingenico" parent="Ingenico_Ingenico::ingenico" sortOrder="10" dependsOnModule="Ingenico_Ingenico" 
+        action="ingenico/verification" resource="Ingenico_Ingenico::ingenico"/>
+      <add id="Ingenico_Ingenico::ingenico_reconciliation" title="Reconciliation" translate="title" 
+        module="Ingenico_Ingenico" parent="Ingenico_Ingenico::ingenico" sortOrder="10" dependsOnModule="Ingenico_Ingenico" 
+        action="ingenico/reconciliation" resource="Ingenico_Ingenico::ingenico"/>
+    </menu>
+</config>

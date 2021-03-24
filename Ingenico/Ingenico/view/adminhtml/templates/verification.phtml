@@ -1,0 +1,116 @@
+<style>
+    #status-table {
+        width: 50%;
+        margin-top: 25px;
+    }
+
+    #status-table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #status-table,
+    th,
+    td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    #status-table tr th {
+        text-align: left;
+    }
+
+    #tpsl-error-message {
+        margin-top: 5px;
+    }
+</style>
+<div class="container">
+    <form action="" id="verification-form">
+
+        <label for="merchant-transaction-id">Merchant Transaction Id</label>
+        <input type="text" class="admin__control-text" name="merchant_transaction_id" id="merchant-transaction-id" required>
+
+        <label for="txn-date">Txn Date</label>
+        <input type="date" class="admin__control-text" name="txn_date" id="txn-date" required>
+
+        <input type="submit" class="action-primary" id="verification-submit-btn">
+    </form>
+    <p style="color:red;display:none" id="tpsl-error-message"> An Error Occured . Please try again later</p>
+    <table id="status-table" style="display: none;">
+        <tr>
+            <th>Status Code</th>
+            <td id="td-status-code"></td>
+        </tr>
+        <tr>
+            <th>Status Message</th>
+            <td id="td-status-message"></td>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <td id="td-message"></td>
+        </tr>
+        <tr>
+            <th>Merchant Transaction Reference No</th>
+            <td id="td-merchant-transaction-id"></td>
+        </tr>
+        <tr>
+            <th>TPSL Transaction ID</th>
+            <td id="td-tpsl-transaction-id"></td>
+        </tr>
+        <tr>
+            <th>Amount</th>
+            <td id="td-amount"></td>
+        </tr>
+        <tr>
+            <th>Date Time</th>
+            <td id="td-date-time"></td>
+        </tr>
+    </table>
+</div>
+<script>
+    require([
+        'jquery',
+    ], function($) {
+        $(function() {
+
+            $("#verification-form").submit(function(event) {
+                event.preventDefault();
+                var str = $(this).serializeArray();
+
+                var url = "<?php echo $block->getResultUrl() ?>";
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        merchant_identifier: "<?php echo $block->getMerchantCode() ?>",
+                        date_time: str[1].value,
+                        merchant_transaction_id: str[0].value
+                    },
+                    showLoader: true,
+                    cache: false,
+                    success: function(response) {
+                        console.log(response);
+                        $("#td-status-code").html(response.data.paymentMethod.paymentTransaction.statusCode);
+                        $("#td-status-message").html(response.data.paymentMethod.paymentTransaction.statusMessage);
+                        $("#td-message").html(response.data.paymentMethod.paymentTransaction.errorMessage);
+                        $("#td-merchant-transaction-id").html(response.data.merchantTransactionIdentifier);
+                        $("#td-tpsl-transaction-id").html(response.data.paymentMethod.paymentTransaction.identifier);
+                        $("#td-amount").html(response.data.paymentMethod.paymentTransaction.amount);
+                        $("#td-date-time").html(response.data.paymentMethod.paymentTransaction.dateTime);
+                        $("#status-table").show();
+                        $("#tpsl-error-message").hide();
+                        return true;
+                    },
+                    error: function(error) {
+                        $("#status-table").hide();
+                        $("#tpsl-error-message").show();
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>

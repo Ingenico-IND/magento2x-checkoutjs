@@ -1,0 +1,22 @@
+{
+    "name": "ingenico/module-ingenico",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "prod.provisioning.ind@ingenico.com",
+            "name": "Ingenico"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ingenico\\Ingenico\\": ""
+        }
+    }
+}

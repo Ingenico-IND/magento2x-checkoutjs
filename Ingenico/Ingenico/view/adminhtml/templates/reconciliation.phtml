@@ -1,0 +1,50 @@
+<div class="container">
+    <form action="" id="reconciliation-form">
+        <label for="from-date">From Date</label>
+        <input type="date" class="admin__control-text" name="from_date" id="from-date" max="<?php echo $block->getMaxFromDate() ?>" required>
+
+        <label for="to-date">To Date</label>
+        <input type="date" class="admin__control-text" name="to_date" id="to-date" max="<?php echo $block->getMaxToDate() ?>" required>
+
+        <input type="submit" class="action-primary" id="reconciliation-submit-btn">
+    </form>
+    <div class="container message-system-inner" id="reconciliation-message" style="padding: 20px; margin-top:30px;display:none">
+
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+    ], function($) {
+        $(function() {
+
+            $("#reconciliation-form").submit(function(event) {
+                event.preventDefault();
+                var str = $(this).serializeArray();
+
+                var url = "<?php echo $block->getResultUrl() ?>";
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        from_date: str[0].value,
+                        to_date: str[1].value,
+                    },
+                    showLoader: true,
+                    cache: false,
+                    success: function(response) {
+                        $("#reconciliation-message").html(response.data);
+                        $("#reconciliation-message").show();
+                        return true;
+                    },
+                    error: function(error) {
+                        return true;
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>
