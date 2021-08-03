@@ -4,8 +4,11 @@
       data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()" />
     <label data-bind="attr: {'for': getCode()}" class="label">
       <img data-bind="attr: { src: require.toUrl('Ingenico_Ingenico/images/logo.jpg') }" class="payment-icon"
-        width="20%" />
+        width="30%" />
     </label>
+
+    </br>
+    <label data-bind="attr: {'for': getCode()}" class="label" for="ingenico"><span data-bind="text: getTitle()"></span></label><!-- To Fetch the title from backend -->
   </div>
   <div class="payment-method-content">
     <!-- ko foreach: getRegion('messages') -->
