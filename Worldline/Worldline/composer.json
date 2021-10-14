@@ -1,0 +1,22 @@
+{
+    "name": "Worldline/module-Worldline",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "prod.provisioning.ind@Worldline.com",
+            "name": "Worldline"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Worldline\\Worldline\\": ""
+        }
+    }
+}

@@ -1,0 +1,20 @@
+.Worldline-payment-gateway .button-container {
+    float: right;
+}
+
+.Worldline-payment-logo {
+    background: url("https://cdn.Worldline.com/images/logo.png");
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px 0 0px;
+    width: 180px;
+    height: 60px;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.Worldline-payment-byline {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    font-weight: normal;
+}

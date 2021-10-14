@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Worldline_Worldline::Worldline" title="Worldline" translate="title" module="Worldline_Worldline" 
+        parent="Magento_Sales::sales" sortOrder="50" dependsOnModule="Worldline_Worldline" resource="Worldline_Worldline::Worldline"/>
+      <add id="Worldline_Worldline::Worldline_verification" title="Payment Verification" translate="title" 
+        module="Worldline_Worldline" parent="Worldline_Worldline::Worldline" sortOrder="10" dependsOnModule="Worldline_Worldline" 
+        action="Worldline/verification" resource="Worldline_Worldline::Worldline"/>
+      <add id="Worldline_Worldline::Worldline_reconciliation" title="Reconciliation" translate="title" 
+        module="Worldline_Worldline" parent="Worldline_Worldline::Worldline" sortOrder="10" dependsOnModule="Worldline_Worldline" 
+        action="Worldline/reconciliation" resource="Worldline_Worldline::Worldline"/>
+    </menu>
+</config>
