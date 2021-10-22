@@ -6,7 +6,7 @@
 				<active>0</active>
 				<model>Worldline\Worldline\Model\Payment\WorldlinePayment</model>
 				<order_success_status>processing</order_success_status>
-				<title>Credit Card / Debit Card / Net Banking (Worldline)</title>
+				<title>Cards / UPI / Netbanking / Wallets</title>
 				<allowspecific>0</allowspecific>
 				<paymentModeOrder>wallets,netBanking,imps,cards,cashCards,UPI,MVISA,debitPin,NEFTRTGS,emiBanks</paymentModeOrder>
 				<primary_color_code>#3977b7</primary_color_code>
